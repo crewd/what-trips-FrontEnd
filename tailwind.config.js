@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#63BE67"
+      },
+      fontFamily: {
+        sans: ["Noto Sans KR", 'sans-serif']
       }
     },
   },
