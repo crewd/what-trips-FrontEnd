@@ -28,7 +28,7 @@ const Login = () => {
         <div className="pt-[50px]">
           <p>
             아직 회원이 아니신가요?
-            <Link className="font-bold" to="#">
+            <Link className="font-bold pl-[5px]" to="#">
               회원가입
             </Link>
           </p>
