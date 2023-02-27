@@ -31,19 +31,19 @@ const Login = () => {
               placeholder="비밀번호를 입력해 주세요"
             />
           </div>
-          <div className="pt-[16px]">
+          <div className="pt-[24px]">
             <button className="bg-primary text-white w-full py-[12px] rounded-lg mb-[16px] font-semibold">
               로그인
             </button>
             <button className="bg-[#FAE500] text-[#3B1E1E] w-full py-[12px] rounded-lg font-semibold">
-              카카오
+              (아이콘) 카카오
             </button>
           </div>
           <div className="pt-[50px]">
             <p>
               아직 회원이 아니신가요?
               <Link className="font-bold pl-[5px]" to="#">
-                회원가입
+                회원가입 {`>`}
               </Link>
             </p>
           </div>
