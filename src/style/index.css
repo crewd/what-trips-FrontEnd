@@ -5,5 +5,20 @@
 @layer base {
   body {
     @apply font-sans;
+    @apply text-sm;
+    color: #707070;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: #333333;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
   }
 }
