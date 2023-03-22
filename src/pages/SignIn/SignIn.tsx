@@ -1,15 +1,43 @@
-import React from "react";
+import axios from "axios";
+import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { loginState } from "recoils";
 
 const SignIn: React.FC = () => {
+  const inputEmailRef = useRef<HTMLInputElement>(null);
+  const inputPasswordRef = useRef<HTMLInputElement>(null);
+  const BASE_URL = `/user/login`;
   const nav = useNavigate();
   const setLogin = useSetRecoilState(loginState);
+
+  const login = async (email: string, password: string) => {
+    await axios({
+      method: "post",
+      url: BASE_URL,
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      data: {
+        email,
+        password,
+      },
+    })
+      .then((res) => {
+        setLogin(res.data.token);
+        nav("/", { replace: true });
+      })
+      .catch(() => {
+        alert("아이디 또는 패스워드가 일치하지 않습니다.");
+      });
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLogin(true);
-    nav("/", { replace: true });
+    if (inputEmailRef.current?.value && inputPasswordRef.current?.value) {
+      login(inputEmailRef.current.value, inputPasswordRef.current.value);
+    }
   };
 
   return (
@@ -31,11 +59,13 @@ const SignIn: React.FC = () => {
             <h2 className="hidden font-medium md:block">로그인</h2>
             <div className="pt-[48px]">
               <input
+                ref={inputEmailRef}
                 type="text"
                 className="bg-[#F1F0F5] w-full px-[16px] pt-[12px] pb-[14px] mb-[16px] rounded-md outline-0"
                 placeholder="이메일을 입력해 주세요"
               />
               <input
+                ref={inputPasswordRef}
                 type="password"
                 className="bg-[#F1F0F5] w-full px-[16px] pt-[12px] pb-[14px] rounded-md outline-0"
                 placeholder="비밀번호를 입력해 주세요"
