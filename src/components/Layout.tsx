@@ -6,8 +6,10 @@ export const AppLayout: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="pt-[72px]">
-        <Outlet />
+      <main className="w-full pt-[56px] md:pt-[64px]">
+        <div className="max-w-5xl p-4 m-auto">
+          <Outlet />
+        </div>
       </main>
     </>
   );
