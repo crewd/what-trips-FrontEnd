@@ -39,7 +39,7 @@ const SignUp: React.FC = () => {
   const onSubmit: SubmitHandler<InputProps> = async (values) => {
     alert(JSON.stringify(values));
     await setTimeout(() => {
-      navigate("/login", { replace: true });
+      navigate("/signIn", { replace: true });
     }, 1000);
   };
 
