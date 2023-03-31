@@ -1,4 +1,4 @@
-import { Modal, TripBox } from "components";
+import { ModalTripInsert, TripBox } from "components";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 // import { useSetRecoilState } from "recoil";
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
           >
             +
           </button>
-          {modalOpen && <Modal setModalOpen={setModalOpen} />}
+          {modalOpen && <ModalTripInsert setModalOpen={setModalOpen} />}
         </>
       ),
     },
