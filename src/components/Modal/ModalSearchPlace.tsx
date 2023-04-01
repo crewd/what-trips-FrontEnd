@@ -9,10 +9,12 @@ export const ModalSearchPlace = ({
   return (
     <ModalFrame title="장소검색">
       <div className="pt-5">
-        <input className="relative w-full p-2 border" type="text" />
-        <button className="absolute w-4 h-4 border" type="button">
-          Q
-        </button>
+        <div className="flex items-center border">
+          <input className="w-full p-2 focus:outline-none" type="text" />
+          <button className="w-6 h-6 mr-2 border" type="button">
+            Q
+          </button>
+        </div>
       </div>
       <div className="pt-3">
         <ul className="h-40 overflow-y-scroll border">
