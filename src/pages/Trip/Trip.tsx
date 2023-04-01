@@ -1,7 +1,9 @@
 import { ModalSearchPlace } from "components";
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Trip = () => {
+  const nav = useNavigate();
   const [accordion, setAccordion] = useState<boolean>(false);
   const [showAddPlanForm, setShowAddPlanForm] = useState<boolean>(false);
   const [showInput, setShowInput] = useState<boolean>(false);
@@ -57,7 +59,9 @@ const Trip = () => {
           </div>
           <span className="pt-1 text-xs">2023.02.15 ~ 2023.02.20</span>
         </div>
-        <div className="w-6 h-6 border">M</div>
+        <div className="w-6 h-6 border" onClick={() => nav("./map")}>
+          M
+        </div>
       </div>
 
       <div className=" mt-7">
@@ -78,8 +82,8 @@ const Trip = () => {
         {accordion && (
           <div className="p-6 shadow-md rounded-b-md">
             <div className="flex items-center justify-between w-full">
-              <div className="truncate ">
-                <label className="flex truncate">
+              <div className="truncate">
+                <label className="flex">
                   <input
                     className="hidden peer"
                     type="checkbox"
@@ -89,7 +93,7 @@ const Trip = () => {
                   <span className="ml-5 cursor-pointer peer-checked:line-through peer-checked:text-[#a0a0a0]">
                     09:00
                   </span>
-                  <span className="ml-5 cursor-pointer peer-checked:line-through peer-checked:text-[#a0a0a0]">
+                  <span className="ml-5 cursor-pointer truncate peer-checked:line-through peer-checked:text-[#a0a0a0]">
                     김포공항 도착
                   </span>
                 </label>

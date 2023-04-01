@@ -20,7 +20,8 @@
       "components": ["components"],
       "pages": ["pages"],
       "recoils": ["recoils"]
-    }
+    },
+    "types": ["kakao.maps.d.ts"]
   },
   "include": ["src"]
 }
