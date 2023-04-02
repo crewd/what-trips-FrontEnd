@@ -1,4 +1,5 @@
 import React from "react";
+import { MdSearch } from "react-icons/md";
 import { ModalFrame } from "./ModalFrame";
 
 export const ModalSearchPlace = ({
@@ -11,8 +12,8 @@ export const ModalSearchPlace = ({
       <div className="pt-5">
         <div className="flex items-center border">
           <input className="w-full p-2 focus:outline-none" type="text" />
-          <button className="w-6 h-6 mr-2 border" type="button">
-            Q
+          <button className="mr-2" type="button">
+            <MdSearch className="w-6 h-6" />
           </button>
         </div>
       </div>

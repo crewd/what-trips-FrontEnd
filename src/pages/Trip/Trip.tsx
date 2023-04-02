@@ -1,5 +1,17 @@
 import { ModalSearchPlace } from "components";
 import React, { useRef, useState } from "react";
+import {
+  MdCancel,
+  MdCheckBox,
+  MdCheckBoxOutlineBlank,
+  MdCheckCircle,
+  MdDeleteForever,
+  MdEdit,
+  MdExpandLess,
+  MdExpandMore,
+  MdLocationOn,
+  MdMap,
+} from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const Trip = () => {
@@ -13,7 +25,11 @@ const Trip = () => {
 
   const editTripName = () => {
     if (!inputRef.current) return;
-    setTripName(inputRef.current?.value);
+    if (!inputRef.current?.value.trim()) {
+      setShowInput(false);
+      return;
+    }
+    setTripName(inputRef.current?.value.replace(/^\s+|\s*$/g, ""));
     setShowInput(false);
   };
 
@@ -26,42 +42,41 @@ const Trip = () => {
             {!showInput ? (
               <>
                 <h2 className="font-medium">{tripName}</h2>
-                <div
-                  className="w-4 h-4 ml-2 border"
-                  onClick={() => setShowInput(true)}
-                >
-                  P
+                <div className="ml-2" onClick={() => setShowInput(true)}>
+                  <MdEdit className="w-4 h-4" />
                 </div>
               </>
             ) : (
               <>
                 <input
-                  className="p-1 text-base"
+                  className="p-1 text-base focus:outline-none"
                   type="text"
                   ref={inputRef}
                   placeholder="10자이내 입력"
                   maxLength={10}
                 />
-                <div
-                  className="w-4 h-4 ml-2 border"
+                <button
+                  className="ml-2"
+                  type="button"
                   onClick={() => editTripName()}
                 >
-                  O
-                </div>
-                <div
-                  className="w-4 h-4 ml-2 border"
+                  <MdCheckCircle className="w-5 h-5 fill-primary" />
+                </button>
+                <button
+                  className="ml-2"
+                  type="button"
                   onClick={() => setShowInput(false)}
                 >
-                  X
-                </div>
+                  <MdCancel className="w-5 h-5 fill-[#e91919]" />
+                </button>
               </>
             )}
           </div>
           <span className="pt-1 text-xs">2023.02.15 ~ 2023.02.20</span>
         </div>
-        <div className="w-6 h-6 border" onClick={() => nav("./map")}>
-          M
-        </div>
+        <button type="button" onClick={() => nav("./map")}>
+          <MdMap className="w-6 h-6" />
+        </button>
       </div>
 
       <div className=" mt-7">
@@ -77,7 +92,7 @@ const Trip = () => {
               2023.02.15
             </span>
           </div>
-          <div>{accordion ? "▲" : "▼"}</div>
+          {accordion ? <MdExpandLess size={24} /> : <MdExpandMore size={24} />}
         </div>
         {accordion && (
           <div className="p-6 shadow-md rounded-b-md">
@@ -89,7 +104,14 @@ const Trip = () => {
                     type="checkbox"
                     name="plan-item"
                   />
-                  <div className="shrink-0 w-[20px] h-[20px] border cursor-pointer peer-checked:bg-black" />
+                  <MdCheckBoxOutlineBlank
+                    className="peer-checked:hidden shrink-0"
+                    size={20}
+                  />
+                  <MdCheckBox
+                    className="hidden fill-primary peer-checked:block shrink-0"
+                    size={20}
+                  />
                   <span className="ml-5 cursor-pointer peer-checked:line-through peer-checked:text-[#a0a0a0]">
                     09:00
                   </span>
@@ -98,12 +120,13 @@ const Trip = () => {
                   </span>
                 </label>
               </div>
-              <div
-                className="w-4 h-4 border shrink-0"
+              <button
+                className="transition-transform hover:scale-125"
+                type="button"
                 onClick={() => console.log("delete")}
               >
-                X
-              </div>
+                <MdDeleteForever className="w-6 h-6 fill-[#e91919]" />
+              </button>
             </div>
             {showAddPlanForm ? (
               <>
@@ -119,12 +142,13 @@ const Trip = () => {
                       type="text"
                       placeholder="내용"
                     />
-                    <div
-                      className="w-6 h-6 ml-2 border"
+                    <button
+                      className="mx-2"
+                      type="button"
                       onClick={() => setModalOpen(true)}
                     >
-                      X
-                    </div>
+                      <MdLocationOn className="w-6 h-6" />
+                    </button>
                   </div>
                   <div className="max-w-lg pt-4 mx-auto">
                     <button
@@ -146,7 +170,7 @@ const Trip = () => {
               </>
             ) : (
               <button
-                className="block w-5 h-5 mx-auto mt-8 border"
+                className="block w-6 h-6 mx-auto mt-8 text-[24px]"
                 type="button"
                 onClick={() => setShowAddPlanForm(true)}
               >

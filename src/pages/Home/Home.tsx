@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         <>
           <TripBox />
           <button
-            className="fixed block w-12 h-12 text-2xl text-white rounded-full md:mt-12 bottom-8 right-4 md:text-black bg-primary md:bg-transparent md:w-8 md:h-8 md:mx-auto md:static"
+            className="fixed block w-12 h-12 text-3xl text-white rounded-full md:text-2xl md:mt-12 bottom-8 right-4 md:text-black bg-primary md:bg-transparent md:w-8 md:h-8 md:mx-auto md:static"
             onClick={() => setModalOpen(true)}
             type="button"
           >

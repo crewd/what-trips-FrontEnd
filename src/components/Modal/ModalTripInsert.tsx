@@ -13,7 +13,7 @@ export const ModalTripInsert = ({
           여행 제목
         </label>
         <input
-          className="w-full p-2 border"
+          className="w-full p-2 border focus:outline-none"
           type="text"
           id="title"
           placeholder="10자이내 입력"
