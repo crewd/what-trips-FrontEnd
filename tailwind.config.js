@@ -4,11 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#63BE67"
+        primary: "#63BE67",
       },
       fontFamily: {
-        sans: ["Noto Sans KR", 'sans-serif']
-      }
+        sans: ["Noto Sans KR", "sans-serif"],
+      },
+      fontSize: {
+        "3xl": ["2rem", "2.5rem"],
+      },
     },
   },
   plugins: [],

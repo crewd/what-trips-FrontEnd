@@ -1,18 +1,26 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AppLayout from "./components/app-layout";
-import Login from "./pages/login";
+import React, { useEffect } from "react";
+import { RecoilRoot } from "recoil";
+import { AppRoutes } from "./routes";
 
-function App() {
+const App: React.FC = () => {
+  useEffect(() => {
+    if (
+      document.querySelector(
+        `script[src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_MAP_KEY}&libraries=services,clusterer&autoload=false"]`
+      )
+    )
+      return;
+    const script = document.createElement("script");
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_MAP_KEY}&libraries=services,clusterer&autoload=false`;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
   return (
-    <BrowserRouter>
-      <AppLayout>
-        <Routes>
-          <Route path="/" element={<Login />} />
-        </Routes>
-      </AppLayout>
-    </BrowserRouter>
+    <RecoilRoot>
+      <AppRoutes />
+    </RecoilRoot>
   );
-}
+};
 
 export default App;
